@@ -6,5 +6,11 @@ module.exports = {
 	"port": process.env.TYPEORM_PORT,
 	"username": process.env.TYPEORM_USERNAME,
 	"password": process.env.TYPEORM_PASSWORD,
-	"database": "gostack_gobarber"
+	"database": "gostack_gobarber",
+	"migrations": [
+		"./src/database/migrations/*.ts"
+	],
+	"cli": {
+		migrationsDir: "./src/database/migrations"
+	}
 }
