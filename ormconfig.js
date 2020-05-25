@@ -7,6 +7,9 @@ module.exports = {
 	"username": process.env.TYPEORM_USERNAME,
 	"password": process.env.TYPEORM_PASSWORD,
 	"database": "gostack_gobarber",
+	"entities": [
+		"./src/models/*.ts"
+	],
 	"migrations": [
 		"./src/database/migrations/*.ts"
 	],
