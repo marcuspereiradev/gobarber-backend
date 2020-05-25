@@ -10,7 +10,7 @@ export default class CreateAppointments1590175543689
 					{
 						name: 'id',
 						type: 'varchar',
-						isPrimary: 'true',
+						isPrimary: true,
 						generationStrategy: 'uuid',
 					},
 					{
