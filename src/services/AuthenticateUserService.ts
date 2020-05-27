@@ -1,6 +1,9 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 import User from '../models/User';
+
+require('dotenv').config();
 
 interface Request {
 	email: string;
@@ -9,6 +12,7 @@ interface Request {
 
 interface Response {
 	user: User;
+	token: string;
 }
 
 class AuthenticateUserService {
@@ -24,7 +28,12 @@ class AuthenticateUserService {
 		if (!passwordMatched)
 			throw new Error('Incorrect email/password combination.');
 
-		return { user };
+		const token = sign({}, `${process.env.SECRET_MD5_KEY}`, {
+			subject: user.id,
+			expiresIn: '1d',
+		});
+
+		return { user, token };
 	}
 }
 
