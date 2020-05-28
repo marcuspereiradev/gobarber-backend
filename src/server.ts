@@ -5,6 +5,8 @@ import routes from './routes';
 
 import './database';
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(json());
